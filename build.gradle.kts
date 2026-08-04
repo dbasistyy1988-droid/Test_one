@@ -1,3 +1,5 @@
+import jdk.internal.vm.vector.VectorSupport.test
+
 plugins {
     id("java")
 }
@@ -15,6 +17,21 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-tasks.test {
+tasks.test { // запускает все тесты в проекте
     useJUnitPlatform()
+    group = "hometest"
 }
+
+tasks.register<Test>("progon1"){//Запускает 3 теста с тегом "Anather"
+    group = "hometest"
+    useJUnitPlatform {
+        includeTags("Anather")
+    }
+}
+
+
+
+
+
+
+
