@@ -17,15 +17,25 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-tasks.test { // запускает все тесты в проекте
+tasks.test {
     useJUnitPlatform()
-    group = "hometest"
+    group = "verification"
 }
 
-tasks.register<Test>("progon1"){//Запускает 3 теста с тегом "Anather"
-    group = "hometest"
-    useJUnitPlatform {
-        includeTags("Anather")
+tasks.register( "runAllTests") {
+    group = "verification"
+    description = "Запускает все тесты проекта"
+    dependsOn(tasks.test)
+    finalizedBy("printTestRunOver")
+}
+
+tasks.register("printTestRunOver") {
+    group = "verification"
+    doLast {
+        println()
+        println("======================================")
+        println("         TEST RUN IS OVER")
+        println("======================================")
     }
 }
 
