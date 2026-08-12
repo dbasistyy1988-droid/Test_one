@@ -15,6 +15,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.assertj:assertj-core:3.24.2")
 }
 
 tasks.test {
@@ -37,6 +38,13 @@ tasks.register("printTestRunOver") {
         println("         TEST RUN IS OVER")
         println("======================================")
     }
+}
+tasks.test {
+    useJUnitPlatform {
+        // логическое ИЛИ: запустится, если есть хотя бы один из тегов
+        includeTags("testTag | random-data")
+    }
+    group = "verification"
 }
 
 
