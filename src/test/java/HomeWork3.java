@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class HomeWork3 {
     @BeforeEach
@@ -111,5 +111,6 @@ public class HomeWork3 {
         System.out.println("The test was successful, the values matched");
 
     }
+
 
 }
