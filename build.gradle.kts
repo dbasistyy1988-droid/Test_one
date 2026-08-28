@@ -17,6 +17,8 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.assertj:assertj-core:3.24.2")
     implementation("io.rest-assured:rest-assured:5.5.6")
+    implementation("com.codeborne:selenide:7.17.0")
+
 }
 
 tasks.test {
