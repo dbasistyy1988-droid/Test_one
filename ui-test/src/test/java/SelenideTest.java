@@ -100,7 +100,7 @@ public class SelenideTest {
 
         Alert activAlert = Selenide.switchTo().alert();
         System.out.println(activAlert.getText());
-        //activAlert.accept();
+        activAlert.accept();
 
     }
 
