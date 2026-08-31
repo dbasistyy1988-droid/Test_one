@@ -20,7 +20,7 @@ public class DnDTests {
     void setup()
     {
         open("http://localhost:8080");
-        Configuration.holdBrowserOpen = true;
+        //Configuration.holdBrowserOpen = true;
     }
 
    // Задача 1.1
