@@ -1,4 +1,7 @@
+
+import config.ConfigProvider;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import rest.assertions.BasicApiAssert;
@@ -33,5 +36,12 @@ public class CreateGoodTests {
                 .fieldIsEquals("message", "success");
 
     }
+
+    @Test
+    @BeforeEach
+    public void сheckingСonfig(){
+        System.out.println(ConfigProvider.apiProps.url());
+    }
+
 
 }

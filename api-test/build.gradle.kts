@@ -17,6 +17,8 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     // Source: https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind
     implementation("tools.jackson.core:jackson-databind:3.2.1")
+    // Source: https://mvnrepository.com/artifact/org.aeonbits.owner/owner
+    implementation("org.aeonbits.owner:owner:1.0.12")
 
 }
 

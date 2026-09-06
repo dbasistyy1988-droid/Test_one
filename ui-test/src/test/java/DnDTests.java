@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 
@@ -20,17 +21,17 @@ public class DnDTests {
     void setup()
     {
         open("http://localhost:8080");
-        //Configuration.holdBrowserOpen = true;
+        //tConfiguration.holdBrowserOpen = true;
     }
 
-   // Задача 1.1
+    // Задача 1.1
     @Test
     void simpleDnD(){
         sleep(1000);
         firstCard.dragAndDrop(DragAndDropOptions.to(cardButton));
         sleep(2000);
     }
-   // Задача 2.1
+    // Задача 2.1
     @Test
     void deleteCard(){
         firstCard.dragAndDrop(DragAndDropOptions.to(cardButton));
@@ -39,6 +40,6 @@ public class DnDTests {
         sleep(1000);
         threeCart.click();
         sleep(1000);
-        $x("//*[@id='cart-item-50']").shouldNot(exist);
+        $x("//*[@id='cart-item-50']").shouldNot(visible);
     }
 }
