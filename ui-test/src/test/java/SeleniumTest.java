@@ -32,7 +32,7 @@ public class SeleniumTest {
     }
 
     @Test
-    @DisplayName("ДСоздание товара и проверка его отображения")
+    @DisplayName("Cоздание товара и проверка его отображения")
     void productVitrina() {
         //Блок кода для авторизации в админке
         driver.findElement(By.xpath("//a[@href='/admin']")).click();
