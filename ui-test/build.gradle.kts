@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("io.qameta.allure") version "3.2.0"
 }
 
 group = "org.example"
@@ -17,8 +18,12 @@ dependencies {
     implementation("org.assertj:assertj-core:3.24.2")
 // Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
  //   implementation("org.seleniumhq.selenium:selenium-java:4.43.0")
+    // Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-selenide
+    implementation("io.qameta.allure:allure-selenide:2.29.0")
 
 }
+
+
 
 tasks.test {
     useJUnitPlatform()

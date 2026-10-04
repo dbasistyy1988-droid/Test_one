@@ -1,5 +1,6 @@
 
 import config.ConfigProvider;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,9 +16,8 @@ public class CreateGoodTests {
 
     String goodName = "Проверк1";
     double price = 1.5d;
-
+    @Step("Проверка успешного создания товара")
     @Test
-    @DisplayName("200")
     void addNewGood() {
         Response response = getBuilder().setContentJSON().getSpec().log().all().body("""
                         

@@ -1,3 +1,5 @@
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeEach;
 import pages.MainPage;
 import pages.MainPageAssert;
@@ -12,6 +14,11 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp() {
+        SelenideLogger.addListener("AllureSelenide",
+                new AllureSelenide()
+                        .screenshots(true)
+                        .savePageSource(true));
+
         open("http://localhost:8080/");
 
 

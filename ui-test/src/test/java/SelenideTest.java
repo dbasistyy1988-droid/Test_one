@@ -2,10 +2,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -44,6 +41,7 @@ public class SelenideTest {
 
 
     @Test
+    @DisplayName("Создание товара и проверка его видимости")
     void productVitrina() {
         administrationButton.click();
         userName.sendKeys("admin");
@@ -59,6 +57,7 @@ public class SelenideTest {
     }
 
     @Test
+    @DisplayName("Добавление товара в корзину и проверка его видимости")
     void productBasket() {
         addToCart.click();
         baSket.click();
@@ -68,6 +67,7 @@ public class SelenideTest {
 
 
     @Test
+    @DisplayName("Авторизация с некорректным паролем")
     void failLogPass() {
         administrationButton.click();
         userName.sendKeys("admin");
@@ -78,6 +78,7 @@ public class SelenideTest {
     }
 
     @Test
+    @DisplayName("Проверка отображения товара в корзине после обновления страницы")
     void refreshBasket() {
         addToCart.click();
         baSket.click();
@@ -89,6 +90,7 @@ public class SelenideTest {
     }
 
     @Test
+    @DisplayName("Проверка оформления заказа из 4 товаров")
     void orderWithalertmore() {
 
         addToCart.click();
@@ -106,6 +108,7 @@ public class SelenideTest {
 
     //Задача 3
     @Test
+    @DisplayName("Проверка успешного оформления заказа из 3 товаров")
     void orderWithalertnorm() {
         addToCart.click();
         addToCartTwo.click();
@@ -118,6 +121,7 @@ public class SelenideTest {
     }
 
     @Test
+    @DisplayName("Проверка суммы товаров")
     void totalPrice() {
         itemOne.click();
         itemTwo.click();
@@ -127,6 +131,7 @@ public class SelenideTest {
     }
 
     @Test
+    @DisplayName("Проверка отображения информера об успешном добавлении товара")
     void newNotice() {
         administrationButton.click();
         userName.sendKeys("admin");
@@ -140,6 +145,7 @@ public class SelenideTest {
     }
 
     @Test
+    @DisplayName("Проверка редактирования названия товара и проверка изменений")
     void productEditing() {
         administrationButton.click();
         userName.sendKeys("admin");

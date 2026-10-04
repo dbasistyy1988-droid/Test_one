@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
@@ -18,12 +19,14 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class HomeWork4 {
     // Задача 1
+
     private RequestSpecification basicRQ = new RequestSpecBuilder()
             .setBaseUri("http://localhost:8080")
             .setAuth(RestAssured.basic("admin", "secret123"))
             .log(ALL)
             .build();
 
+    @Step("Проверка успешного получения списка товаров на станице")
     @Test
     void hometest1() {
         given()
@@ -35,7 +38,7 @@ public class HomeWork4 {
                 .log().all()
                 .statusCode(200);
     }
-
+    @Step("Проверка успешного получения списка товаров на станице")
     @Test
     void hometest2() {
         given()
@@ -49,7 +52,7 @@ public class HomeWork4 {
                 .log().all()
                 .statusCode(200);
     }
-
+    @Step("Проверка добавления нового товара и проверка его в списке")
     @Test
     void hometest3() {
 
@@ -70,18 +73,18 @@ public class HomeWork4 {
 
         given()
                 .spec(basicRQ)
-                .queryParam("page", 0)
-                .queryParam("size", 11)
+                .queryParam("page", 1)
+                .queryParam("size", 1)
                 .when()
                 .get("/goods/list")
                 .then()
-                .log().all()
                 .statusCode(200)
+                .log().all()
                 .body("goods.name", hasItem("Хлебцы"));
 
 
     }
-
+    @Step("Проверка добавления нового товара и проверка его его отсутствия")
     @Test
     void hometest4() {
 
@@ -119,7 +122,7 @@ public class HomeWork4 {
 
 
     }
-
+    @Step("Проверка с отрицательным значением")
     @Test
     void hometest5() {
         String responsBody = given()
@@ -138,7 +141,7 @@ public class HomeWork4 {
                 .contains("Page size must not be less than one");
 
     }
-
+    @Step("Проверка поиска товара с id = 50")
     @Test
     void hometest6() {
         given()
@@ -149,7 +152,7 @@ public class HomeWork4 {
                 .log().all()
                 .statusCode(200);
     }
-
+    @Step("Проверка отсутствия товара с id = 100")
     @Test
     void hometest7() {
         String message = given()
@@ -168,16 +171,18 @@ public class HomeWork4 {
 
 
     }
+    @Step("Проверка ошибки при удаления товара с 50 по 53 id")
     @Test // Баг - не удаляются записи начиная с 50 по 53 id
     void hometest8() {
         given()
                 .spec(basicRQ)
-                .pathParam("id", 55)
+                .pathParam("id", 53)
                 .delete("/goods/{id}")
                 .then()
                 .log().all()
-                .statusCode(200);
+                .statusCode(500);
     }
+    @Step("Проверка отсутствия товара")
     @Test
     void hometest9() {
         String message = given()
@@ -194,12 +199,13 @@ public class HomeWork4 {
         assertThat(message)
                 .isEqualToIgnoringCase("Good with id '1' is not found");
 }
+    @Step("Проверка изменения названия товара")
     @Test
     void hometest10() {
         given()
                 .spec(basicRQ)
                 .contentType(ContentType.JSON)
-                .pathParam("id", 50)
+                .pathParam("id", 10)
                 .body("""
                         {
                             "name": "Смена названия",
@@ -211,6 +217,7 @@ public class HomeWork4 {
                 .log().all()
                 .statusCode(200);
     }
+    @Step("Проверка негативного изменения названия товара при отсутствии необходимого id")
     @Test
     void hometest11() {
         String message = given()

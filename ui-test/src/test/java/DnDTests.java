@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.DragAndDropOptions;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.exist;
@@ -26,6 +27,7 @@ public class DnDTests {
 
     // Задача 1.1
     @Test
+    @DisplayName("Успешное добавление товара в корзину через Drag-and-Drop")
     void simpleDnD(){
         sleep(1000);
         firstCard.dragAndDrop(DragAndDropOptions.to(cardButton));
@@ -33,6 +35,7 @@ public class DnDTests {
     }
     // Задача 2.1
     @Test
+    @DisplayName("Удаления товра и проверка его исчезновения")
     void deleteCard(){
         firstCard.dragAndDrop(DragAndDropOptions.to(cardButton));
         sleep(1000);

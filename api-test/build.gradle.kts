@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("io.qameta.allure") version "3.2.0"
 }
 
 group = "org.example"
@@ -19,6 +20,8 @@ dependencies {
     implementation("tools.jackson.core:jackson-databind:3.2.1")
     // Source: https://mvnrepository.com/artifact/org.aeonbits.owner/owner
     implementation("org.aeonbits.owner:owner:1.0.12")
+    // Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-rest-assured
+    implementation("io.qameta.allure:allure-rest-assured:2.24.0")
 
 }
 

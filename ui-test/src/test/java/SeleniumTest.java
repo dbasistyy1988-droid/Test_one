@@ -3,6 +3,7 @@ import org.assertj.core.api.Assertions;
 import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,6 +32,7 @@ public class SeleniumTest {
     }
 
     @Test
+    @DisplayName("ДСоздание товара и проверка его отображения")
     void productVitrina() {
         //Блок кода для авторизации в админке
         driver.findElement(By.xpath("//a[@href='/admin']")).click();
@@ -58,6 +60,7 @@ public class SeleniumTest {
 
 
     @Test
+    @DisplayName("Добавление товар в корзину и проверка его отображения")
     void productBasket() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='btn' and @data-name='Бургер']"))).click();
@@ -72,6 +75,7 @@ public class SeleniumTest {
     }
 
     @Test
+    @DisplayName("Проверка авторизации с невалидными данными")
     void failLogPass(){
 
         //Блок кода для авторизации в админке
@@ -90,6 +94,7 @@ public class SeleniumTest {
     }
 
     @Test
+    @DisplayName("Проверка сохранения добавленного товара после обновления страницы")
     void refreshBasket(){
         //Добавление товара в корзину
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
